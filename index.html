@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <title>Класика Баварії: BMW E28</title>
     <style>
-        /* Оновлені стилі для кращого вигляду */
         body {
-            background-color: #1a1a1a; /* Темніший, "гаражний" фон */
+            background-color: #1a1a1a; 
             color: #dadada;
             padding: 20px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -23,7 +22,7 @@
 
         h1 {
             text-align: center;
-            color: #0066cc; /* Колір BMW */
+            color: #0066cc; 
             text-transform: uppercase;
             letter-spacing: 5px;
             transition: transform 0.1s ease-out;
@@ -117,7 +116,6 @@
 </div>
 
 <script>
-    // 1. Анімація заголовка (рух за мишкою)
     const title = document.getElementById('mainTitle');
     document.addEventListener('mousemove', (e) => {
         const x = (window.innerWidth / 2 - e.pageX) / 50;
@@ -125,7 +123,6 @@
         title.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
     });
 
-    // 2. Анімація появи елементів при прокрутці
     const reveals = document.querySelectorAll('.reveal');
     window.addEventListener('scroll', () => {
         reveals.forEach(window => {
@@ -138,8 +135,6 @@
             }
         });
     });
-
-    // Запуск перевірки скролу відразу (якщо сторінка коротка)
     window.dispatchEvent(new Event('scroll'));
 </script>
 
