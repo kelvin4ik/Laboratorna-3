@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<HTML lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Класика Баварії: BMW E28</title>
+    <style>
+        /* Оновлені стилі для кращого вигляду */
+        body {
+            background-color: #1a1a1a; /* Темніший, "гаражний" фон */
+            color: #dadada;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            opacity: 0; /* Для анімації появи */
+            transition: opacity 1.5s ease-in;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0066cc; /* Колір BMW */
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            transition: transform 0.1s ease-out;
+        }
+
+        .card {
+            background-color: #2d2d2d;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 5px solid #0066cc;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+        }
+
+        hr { border: 0; height: 1px; background: #444; margin: 30px 0; }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #0e0e0e;
+            border-radius: 10px;
+        }
+
+        /* Клас для JS анімації списків */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>    
+<body onload="document.body.style.opacity='1'">
+
+<div class="container">
+    <h1 id="mainTitle">BMW E28</h1>
+    <hr>
+
+    <div class="card">
+        <h2>Фізичне форматування тексту</h2>
+        <p>
+            Модель E28 — це <i>друге покоління</i> п'ятої серії. 
+            Двигуни легендарної серії, як-от <tt>M30B34</tt> (3.4 дм<sup>3</sup>), 
+            робили цей кузов справжнім звіром.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>Логічне форматування тексту</h3>
+        <p>
+            <mark>Стан кузова — найголовніше</mark>. Якщо бачиш іржу на стаканах — <del>тікай</del> <ins>готуй зварювальний апарат</ins>.
+            Термін <dfn>Sharknose</dfn> — це ідеологія.
+        </p>
+    </div>
+
+    <hr>
+
+    <div class="reveal">
+        <h2>Чому саме ця модель?</h2>
+        <ul>
+            <li>Агресивний та впізнаваний дизайн.</li>
+            <li>Надійні рядні шістки (M30/M20).</li>
+            <li>Еталонна керованість.</li>
+        </ul>
+    </div>
+
+    <div class="reveal">
+        <h3>План пошуку ідеального авто:</h3>
+        <ol>
+            <li>Моніторинг сайтів.</li>
+            <li>Перевірка "живих" місць (пороги, днище).</li>
+            <li>Діагностика двигуна.</li>
+            <li>Купівля та реставрація.</li>
+        </ol>
+    </div>
+
+    <footer>
+        <p><strong>Автор:</strong> Паша (Власник RTX 5070 & Ryzen 9500F) <br>
+        &copy; 2026 Всі права захищені.</p>
+    </footer>
+</div>
+
+<script>
+    // 1. Анімація заголовка (рух за мишкою)
+    const title = document.getElementById('mainTitle');
+    document.addEventListener('mousemove', (e) => {
+        const x = (window.innerWidth / 2 - e.pageX) / 50;
+        const y = (window.innerHeight / 2 - e.pageY) / 50;
+        title.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+    });
+
+    // 2. Анімація появи елементів при прокрутці
+    const reveals = document.querySelectorAll('.reveal');
+    window.addEventListener('scroll', () => {
+        reveals.forEach(window => {
+            const windowHeight = window.innerHeight;
+            const revealTop = window.getBoundingClientRect().top;
+            const revealPoint = 150;
+
+            if (revealTop < windowHeight - revealPoint) {
+                window.classList.add('active');
+            }
+        });
+    });
+
+    // Запуск перевірки скролу відразу (якщо сторінка коротка)
+    window.dispatchEvent(new Event('scroll'));
+</script>
+
+</body>
+</html>
